@@ -1,0 +1,9 @@
+*.config
+*.pdb
+*.xml
+*.exe
+*.out
+*.log
+regex
+*.sh
+*.txt
