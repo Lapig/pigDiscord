@@ -27,7 +27,6 @@ namespace PigDiscord
                 UseInternalLogHandler = true,
                 AutoReconnect = true
             });
-
             client.MessageCreated += async (sender, e) =>
             {
 
@@ -129,6 +128,10 @@ namespace PigDiscord
                 }
             };
             await client.Connect();
+	    client.Ready += (sender, e) =>
+	    {
+		client.UpdateStatus("Diablo III", -1);
+	    };
             while (true)
             {
                 Console.ReadLine(); sleep();
