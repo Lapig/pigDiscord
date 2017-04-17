@@ -130,7 +130,7 @@ namespace PigDiscord
             await client.Connect();
 	    client.Ready += (sender, e) =>
 	    {
-		client.UpdateStatus("Diablo III", -1);
+		client.UpdateStatus("Halo 2", -1);
 	    };
             while (true)
             {
