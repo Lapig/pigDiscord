@@ -36,7 +36,26 @@ namespace PigDiscord
                         await e.Channel.SendMessage($"Sort yourself out {e.Message.Author.Username}");
                     if (e.Message.Content.StartsWith("!ladder"))
                         await e.Channel.SendMessage(fetchLadder());
-                    if (e.Message.Content.StartsWith("!ahk"))
+                    if (e.Message.Content.IndexOf("halaal", 0, StringComparison.OrdinalIgnoreCase) != -1){
+			Process proc = new Process
+                        {
+                            StartInfo = new ProcessStartInfo
+                            {
+                                FileName = "/bin/bash",
+                                Arguments = "halaalcow.sh",
+                                UseShellExecute = false
+                            }
+                        };
+                        proc.Start();
+                        proc.WaitForExit();
+		        System.IO.StreamReader cowread = new System.IO.StreamReader(@"cow");
+			string respondMsg="";
+			while(( cowread.Peek() >= 0))
+				respondMsg+=cowread.ReadLine()+"\r\n";
+			await e.Channel.SendMessage(respondMsg);
+			//	resonpose+=response
+		    }
+		    if (e.Message.Content.StartsWith("!ahk"))
                     {
                         try
                         {
@@ -130,7 +149,7 @@ namespace PigDiscord
             await client.Connect();
 	    client.Ready += (sender, e) =>
 	    {
-		client.UpdateStatus("Halo 2", -1);
+		client.UpdateStatus("Let It Go", -1);
 	    };
             while (true)
             {
